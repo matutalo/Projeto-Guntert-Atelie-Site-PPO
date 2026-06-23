@@ -16,23 +16,20 @@
     <div class="armazenamento">
         <h1>Armazenamento</h1>
         <p>Insira um produto</p>
-        <input type="text" id="custo" name="custo" min="0" placeholder="Nome do Produto">
-        <button class="enter">Enter</button>
+        <input type="text" id="custo_storage" name="custo" min="0" placeholder="Nome do Produto">
     </div>
     <div class="calculo">
         <h1>Calculadora</h1>
         <p>Custo do Material (R$)</p>
         <input type="number" id="custo" name="custo" min="0" placeholder="R$0,00">
-        <button class="enter">Enter</button>
         <p>Tempo de Trabalho</p>
-        <input type="number" id="tempo" name="custo" min="0" placeholder="0h0min">
-        <button class="enter">Enter</button>
+        <input type="time" id="tempo" name="custo" min="0" placeholder="0h0min">
         <p>Valor da Hora</p>
         <input type="number" id="valorhora" name="valorhora" min="0" placeholder="R$0,00">
-        <button class="enter">Enter</button>
         <p>Porcentagem de lucro</p>
         <input type="number" id="lucro" name="lucro" min="0%" placeholder="0%">
-        <button class="enter">Enter</button>
+        <button id="calcular">Calcular</button>
+<p id="resultado"></p>
     </div>
 </body>
 </html>
