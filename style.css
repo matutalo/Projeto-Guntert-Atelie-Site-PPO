@@ -1,9 +1,14 @@
-.perfil{
+body{
     background-image: url(imgs/fundociano.webp);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
-    z-index: 3;
+
 }
-.armazenamento{
-    z-index: 2;
+img{
+    opacity: 0.5;
 }
