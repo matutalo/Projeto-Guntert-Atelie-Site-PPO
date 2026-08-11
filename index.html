@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="PT-br">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,16 +8,21 @@
     <script src="main.js" defer></script>
     <title>Guntert Ateliê</title>
 </head>
+
 <body>
-    
+
     <div class="perfil">
         <h1>Perfil</h1>
         <p>Nome</p>
     </div>
     <div class="armazenamento">
         <h1>Armazenamento</h1>
-        <p>Insira um produto</p>
-        <input type="text" id="custo_storage" name="custo" min="0" placeholder="Nome do Produto">
+        <p>Insira o nome do produto</p>
+        <input type="text" id="nome_produto" name="nome_produto" placeholder="Nome">
+        <p>Insira a imagem do produto (opcional)</p>
+        <input type="file" id="imagem_produto" name="imagem_produto" placeholder="Imagem">
+        <p>Insira a quantidade de produtos</p>
+        <input type="text" id="quantidade_produto" name="quantidade_produto" placeholder="Quantidade">
     </div>
     <div class="calculo">
         <h1>Calculadora</h1>
@@ -29,7 +35,8 @@
         <p>Porcentagem de lucro</p>
         <input type="number" id="lucro" name="lucro" min="0%" placeholder="0%">
         <button id="calcular">Calcular</button>
-<p id="resultado"></p>
+        <p id="resultado"></p>
     </div>
 </body>
+
 </html>
