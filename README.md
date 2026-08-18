@@ -1,6 +1,1 @@
-h1{
-    font-size: 100px;
-}
-p {
-    font-size: 40px;
-}
+
