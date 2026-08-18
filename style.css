@@ -1,316 +1,399 @@
-/* =========================
-   CONFIGURAÇÕES GERAIS
-========================= */
+/* ============================================================
+   GUNTERT ATELIÊ — style.css
+   Estrutura: 1. Reset  2. Variáveis  3. Base  4. Layout geral
+              5. Perfil  6. Armazenamento  7. Calculadora
+              8. Componentes reutilizáveis  9. Responsivo
+   ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
-
-* {
+/* ---------- 1. Reset ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
+/* ---------- 2. Variáveis ---------- */
 :root {
-    --creme: #f8f1e8;
-    --creme-escuro: #eee1d2;
-    --marrom: #5b4033;
-    --marrom-claro: #8b6b5b;
-    --rosa: #b97878;
-    --rosa-escuro: #9d5f62;
-    --branco: #fffdf9;
-    --texto: #3f3029;
-    --borda: #e2d1c0;
-    --sombra: 0 15px 40px rgba(91, 64, 51, 0.12);
+    --cor-fundo: #faf6f1;
+    --cor-superficie: #ffffff;
+    --cor-borda: #e6dcd0;
+
+    --cor-primaria: #b5651d;
+    --cor-primaria-escura: #8f4e14;
+    --cor-secundaria: #6b8f71;
+    --cor-secundaria-escura: #4f6b54;
+
+    --cor-texto: #3a2f28;
+    --cor-texto-suave: #7a6d62;
+    --cor-placeholder: #a99c8f;
+
+    --cor-perigo: #b3413b;
+    --cor-perigo-escura: #8f2f2a;
+
+    --fonte-titulo: "Poppins", "Segoe UI", sans-serif;
+    --fonte-corpo: "Inter", "Segoe UI", sans-serif;
+
+    --raio: 12px;
+    --raio-pequeno: 8px;
+    --sombra: 0 2px 8px rgba(58, 47, 40, 0.08);
+    --sombra-hover: 0 4px 14px rgba(58, 47, 40, 0.14);
+    --transicao: all 0.2s ease-in-out;
+}
+
+/* ---------- 3. Base ---------- */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap");
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    min-height: 100vh;
-    padding: 50px 20px;
-
-    font-family: "DM Sans", sans-serif;
-    color: var(--texto);
-
-    background:
-        radial-gradient(circle at top left, #f1d9d2 0%, transparent 30%),
-        radial-gradient(circle at bottom right, #e8d6c3 0%, transparent 30%),
-        var(--creme);
+    font-family: var(--fonte-corpo);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.5;
+    padding: 32px 16px 64px;
 }
-
-
-/* =========================
-   TÍTULOS
-========================= */
 
 h1 {
-    font-family: "Playfair Display", serif;
-    font-size: 2rem;
-    color: var(--marrom);
-    margin-bottom: 20px;
+    font-family: var(--fonte-titulo);
+    font-size: 1.5rem;
+    color: var(--cor-primaria-escura);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--cor-borda);
 }
 
+p {
+    color: var(--cor-texto-suave);
+    margin-bottom: 6px;
+}
 
-/* =========================
-   CONTAINER DOS CARDS
-========================= */
+/* ---------- 4. Layout geral ---------- */
+body {
+    display: grid;
+    grid-template-columns: 260px 1fr 1fr;
+    grid-template-areas: "perfil armazenamento calculo";
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+.perfil { grid-area: perfil; }
+.armazenamento { grid-area: armazenamento; }
+.calculo { grid-area: calculo; }
 
 .perfil,
 .armazenamento,
 .calculo {
-    width: min(100%, 600px);
-    margin: 0 auto 25px;
-
-    padding: 30px;
-
-    background: rgba(255, 253, 249, 0.85);
-    border: 1px solid rgba(226, 209, 192, 0.8);
-    border-radius: 24px;
-
+    background-color: var(--cor-superficie);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
     box-shadow: var(--sombra);
-
-    backdrop-filter: blur(10px);
-
-    animation: aparecer 0.6s ease;
+    padding: 24px;
 }
 
-
-/* =========================
-   PERFIL
-========================= */
-
+/* ---------- 5. Perfil ---------- */
 .perfil {
-    position: relative;
-    overflow: hidden;
+    text-align: center;
+    align-self: start;
+    position: sticky;
+    top: 32px;
 }
 
-.perfil::before {
-    content: "✦";
-
-    position: absolute;
-    right: 25px;
-    top: 20px;
-
-    font-size: 2.5rem;
-    color: var(--rosa);
-    opacity: 0.35;
+.perfil h1 {
+    border: none;
+    padding-bottom: 0;
 }
 
 .perfil p {
-    font-size: 1rem;
-    color: var(--marrom-claro);
-}
-
-
-/* =========================
-   ARMAZENAMENTO
-========================= */
-
-.armazenamento p,
-.calculo p {
-    margin-bottom: 8px;
-
-    font-size: 0.9rem;
+    font-family: var(--fonte-titulo);
+    font-size: 1.1rem;
     font-weight: 600;
-    color: var(--marrom-claro);
+    color: var(--cor-texto);
+    background: linear-gradient(135deg, var(--cor-secundaria), var(--cor-secundaria-escura));
+    color: #fff;
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 999px;
+    margin-top: 8px;
 }
 
-.armazenamento input {
-    width: 100%;
+/* ---------- 6. Formulários (compartilhado por armazenamento e calculadora) ---------- */
+form,
+.calculo {
+    display: flex;
+    flex-direction: column;
 }
 
+label,
+form p,
+.calculo > p {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--cor-texto-suave);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-top: 14px;
+    margin-bottom: 4px;
+}
 
-/* =========================
-   INPUTS
-========================= */
+form p:first-of-type,
+.calculo > p:first-of-type {
+    margin-top: 0;
+}
 
-input {
+input[type="text"],
+input[type="number"],
+input[type="time"],
+select {
     width: 100%;
-    height: 50px;
-
-    padding: 0 16px;
-
-    font-family: "DM Sans", sans-serif;
-    font-size: 1rem;
-    color: var(--texto);
-
-    background: var(--branco);
-
-    border: 2px solid var(--borda);
-    border-radius: 12px;
-
-    outline: none;
-
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        transform 0.2s ease;
+    padding: 10px 12px;
+    font-family: var(--fonte-corpo);
+    font-size: 0.95rem;
+    color: var(--cor-texto);
+    background-color: var(--cor-fundo);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-pequeno);
+    transition: var(--transicao);
 }
 
 input::placeholder {
-    color: #b9a79b;
+    color: var(--cor-placeholder);
 }
 
-input:focus {
-    border-color: var(--rosa);
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+    background-color: var(--cor-superficie);
+    box-shadow: 0 0 0 3px rgba(181, 101, 29, 0.15);
+}
 
-    box-shadow: 0 0 0 4px rgba(185, 120, 120, 0.12);
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, var(--cor-texto-suave) 50%),
+        linear-gradient(135deg, var(--cor-texto-suave) 50%, transparent 50%);
+    background-position: calc(100% - 18px) center, calc(100% - 13px) center;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+}
 
+/* Grupo de inputs "preço a cada X" gerado dinamicamente em #opcoes */
+#opcoes p {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    text-transform: none;
+    font-weight: 400;
+    font-size: 0.95rem;
+    color: var(--cor-texto);
+    margin-top: 12px;
+}
+
+#opcoes input {
+    width: 90px;
+    flex: 1 1 90px;
+}
+
+/* ---------- 7. Botões ---------- */
+button {
+    font-family: var(--fonte-corpo);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: var(--raio-pequeno);
+    cursor: pointer;
+    transition: var(--transicao);
+}
+
+#salvar,
+#calcular {
+    margin-top: 20px;
+    padding: 12px 18px;
+    color: #fff;
+    background-color: var(--cor-primaria);
+    box-shadow: var(--sombra);
+}
+
+#salvar:hover,
+#calcular:hover {
+    background-color: var(--cor-primaria-escura);
+    box-shadow: var(--sombra-hover);
     transform: translateY(-1px);
 }
 
-
-/* =========================
-   CALCULADORA
-========================= */
-
-.calculo {
-    position: relative;
+#resultado_armazenamento,
+#resultado_calculo {
+    margin-top: 16px;
+    padding: 12px 14px;
+    background-color: #f1f6f2;
+    border: 1px solid var(--cor-secundaria);
+    border-radius: var(--raio-pequeno);
+    color: var(--cor-secundaria-escura);
+    font-weight: 600;
+    font-size: 0.9rem;
 }
 
-.calculo h1 {
+#resultado_armazenamento:empty,
+#resultado_calculo:empty {
+    display: none;
+}
+
+/* ---------- 8. Lista de matérias-primas (#lista_materiais) ---------- */
+#lista_materiais {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.materia {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 12px 14px;
+    background-color: var(--cor-fundo);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-pequeno);
+    transition: var(--transicao);
+}
+
+.materia:hover {
+    border-color: var(--cor-primaria);
+    box-shadow: var(--sombra);
+}
+
+.materia h3 {
+    font-family: var(--fonte-titulo);
+    font-size: 0.95rem;
+    color: var(--cor-texto);
+    flex: 1 1 100%;
+}
+
+.materia p {
+    flex: 1 1 auto;
+    font-size: 0.85rem;
+    color: var(--cor-texto-suave);
+    margin-bottom: 0;
+}
+
+.materia button {
+    padding: 7px 12px;
+    font-size: 0.8rem;
+}
+
+.adicionar_calculo {
+    background-color: var(--cor-secundaria);
+    color: #fff;
+}
+
+.adicionar_calculo:hover {
+    background-color: var(--cor-secundaria-escura);
+}
+
+.delete_armazenamento {
+    background-color: transparent;
+    color: var(--cor-perigo);
+    border: 1px solid var(--cor-perigo);
+}
+
+.delete_armazenamento:hover {
+    background-color: var(--cor-perigo);
+    color: #fff;
+}
+
+/* ---------- 9. Itens selecionados para o cálculo (#itens_calculo) ---------- */
+#itens_calculo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+#itens_calculo > p {
+    text-transform: none;
+    font-weight: 400;
+    color: var(--cor-texto-suave);
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 16px;
+    border: 1px dashed var(--cor-borda);
+    border-radius: var(--raio-pequeno);
+}
+
+.item_calculo {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-wrap: wrap;
+    padding: 10px 12px;
+    background-color: var(--cor-fundo);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-pequeno);
 }
 
-.calculo h1::before {
-    content: "♡";
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 38px;
-    height: 38px;
-
-    font-family: Arial, sans-serif;
-    font-size: 1.2rem;
-
-    color: white;
-    background: var(--rosa);
-
-    border-radius: 50%;
+.item_calculo span {
+    flex: 1 1 100%;
+    font-size: 0.85rem;
+    color: var(--cor-texto);
+    font-weight: 500;
 }
 
-
-/* Espaçamento entre os campos */
-
-.calculo input {
-    margin-bottom: 18px;
+.item_calculo .qtd_calculo {
+    flex: 1 1 140px;
+    width: auto;
 }
 
-
-/* =========================
-   BOTÃO
-========================= */
-
-button {
-    width: 100%;
-    height: 52px;
-
-    margin-top: 5px;
-
-    border: none;
-    border-radius: 13px;
-
-    font-family: "DM Sans", sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-
-    color: white;
-    background: linear-gradient(
-        135deg,
-        var(--rosa),
-        var(--rosa-escuro)
-    );
-
-    cursor: pointer;
-
-    box-shadow: 0 8px 20px rgba(157, 95, 98, 0.25);
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        filter 0.2s ease;
+.item_calculo .remover_calculo {
+    flex: 0 0 auto;
+    padding: 7px 12px;
+    font-size: 0.8rem;
+    background-color: transparent;
+    color: var(--cor-perigo);
+    border: 1px solid var(--cor-perigo);
 }
 
-button:hover {
-    transform: translateY(-2px);
-
-    box-shadow: 0 12px 25px rgba(157, 95, 98, 0.35);
-
-    filter: brightness(1.05);
+.item_calculo .remover_calculo:hover {
+    background-color: var(--cor-perigo);
+    color: #fff;
 }
 
-button:active {
-    transform: translateY(0);
-}
-
-
-/* =========================
-   RESULTADO
-========================= */
-
-#resultado {
-    min-height: 30px;
-
-    margin-top: 22px;
-    margin-bottom: 0 !important;
-    padding: 16px;
-
-    text-align: center;
-
-    font-size: 1.1rem !important;
-    font-weight: 700 !important;
-
-    color: var(--marrom) !important;
-
-    background: #f5e5dc;
-
-    border: 1px solid #e8cfc3;
-    border-radius: 12px;
-}
-
-
-/* =========================
-   ANIMAÇÃO
-========================= */
-
-@keyframes aparecer {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-/* =========================
-   RESPONSIVIDADE
-========================= */
-
-@media (max-width: 600px) {
-
+/* ---------- 10. Responsivo ---------- */
+@media (max-width: 1000px) {
     body {
-        padding: 25px 15px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "perfil perfil"
+            "armazenamento calculo";
+    }
+
+    .perfil {
+        position: static;
+    }
+}
+
+@media (max-width: 680px) {
+    body {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "perfil"
+            "armazenamento"
+            "calculo";
+        padding: 20px 12px 48px;
+        gap: 16px;
     }
 
     .perfil,
     .armazenamento,
     .calculo {
-        padding: 22px;
-        border-radius: 20px;
-    }
-
-    h1 {
-        font-size: 1.7rem;
-    }
-
-    input,
-    button {
-        height: 48px;
+        padding: 18px;
     }
 }
