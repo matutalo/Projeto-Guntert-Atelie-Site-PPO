@@ -13,29 +13,41 @@
 
     <div class="perfil">
         <h1>Perfil</h1>
-        <p>Nome</p>
+        <p>Davi</p>
     </div>
     <div class="armazenamento">
         <h1>Armazenamento</h1>
-        <p>Insira o nome do produto</p>
-        <input type="text" id="nome_produto" name="nome_produto" placeholder="Nome">
-        <p>Insira a imagem do produto (opcional)</p>
-        <input type="file" id="imagem_produto" name="imagem_produto" placeholder="Imagem">
-        <p>Insira a quantidade de produtos</p>
-        <input type="text" id="quantidade_produto" name="quantidade_produto" placeholder="Quantidade">
+        <form id="form_nome_metodo">
+        <p>Nome da matéria prima:</p>
+        <input type="text" id="nome_produto" name="nome_produto" placeholder="Nome" required>
+        <p>Método de custo:</p>
+        <select id="metodo_custo" name="metodo_custo" required>
+            <option value="" disabled selected>Selecione uma opção</option>
+            <option value="area">Área</option>
+            <option value="peso">Peso</option>
+            <option value="volume">Volume</option>
+            <option value="unidade">Unidade</option>
+        </select>
+        <div id="opcoes"></div>
+        <button id="salvar" type="submit">Salvar</button>
+        </form>
+        <p id="resultado_armazenamento"></p>
+        <div id="lista_materiais"></div>
     </div>
     <div class="calculo">
         <h1>Calculadora</h1>
-        <p>Custo do Material (R$)</p>
+        <p>Produtos selecionados:</p>
+        <div id="itens_calculo"></div>
+        <p>Custo extra (R$):</p>
         <input type="number" id="custo" name="custo" min="0" placeholder="R$0,00">
-        <p>Tempo de Trabalho</p>
-        <input type="time" id="tempo" name="custo" min="0" placeholder="0h0min">
-        <p>Valor da Hora</p>
+        <p>Tempo de Trabalho:</p>
+        <input type="time" id="tempo" name="tempo" placeholder="0h0min">
+        <p>Valor da Hora:</p>
         <input type="number" id="valorhora" name="valorhora" min="0" placeholder="R$0,00">
-        <p>Porcentagem de lucro</p>
-        <input type="number" id="lucro" name="lucro" min="0%" placeholder="0%">
-        <button id="calcular">Calcular</button>
-        <p id="resultado"></p>
+        <p>Porcentagem de lucro:</p>
+        <input type="number" id="lucro" name="lucro" min="0" placeholder="0%">
+        <button id="calcular" type="button">Calcular</button>
+        <p id="resultado_calculo"></p>
     </div>
 </body>
 
